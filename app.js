@@ -19,7 +19,7 @@ window.addEventListener('load', () =>{
             done: false,
             createdAt: new Date().getTime()
         }
-        todos.push(todo)
+                todos.push(todo)
 
         localStorage.setItem('todos', JSON.stringify(todos))
 
@@ -87,7 +87,7 @@ function DisplayTodos() {
             DisplayTodos();
         })
 
-        edit.addEventListener('click', (e) =>{
+        edit.addEventListener('click', () =>{
             const input = content.querySelector('input');
             input.removeAttribute('readonly')
             input.focus()
@@ -98,12 +98,14 @@ function DisplayTodos() {
                 DisplayTodos()
             })
 
-            deleted.addEventListener('click', (e) =>{
-                todos = todos.filter(t => t != todo)
-                localStorage.setItem('todos', JSON.stringify(todos))
-                DisplayTodos()
             })
 
+            deleted.addEventListener('click', () =>{
+                todos = todos.filter(t => t != todo)
+                console.log(todos)
+
+                localStorage.setItem('todos', JSON.stringify(todos))
+                DisplayTodos()
 
         })
 
